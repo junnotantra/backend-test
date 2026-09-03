@@ -1,4 +1,3 @@
--- +goose Up
 CREATE TABLE items (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     sku TEXT NOT NULL,
@@ -11,7 +10,3 @@ CREATE TABLE inventory (
     quantity INTEGER NOT NULL DEFAULT 0,
     FOREIGN KEY (item_id) REFERENCES items(id)
 );
-
--- +goose Down
-DROP TABLE inventory;
-DROP TABLE items;
