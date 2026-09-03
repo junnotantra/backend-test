@@ -1,0 +1,17 @@
+-- +goose Up
+CREATE TABLE items (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    sku TEXT NOT NULL,
+    name TEXT NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE inventory (
+    item_id INTEGER PRIMARY KEY,
+    quantity INTEGER NOT NULL DEFAULT 0,
+    FOREIGN KEY (item_id) REFERENCES items(id)
+);
+
+-- +goose Down
+DROP TABLE inventory;
+DROP TABLE items;
